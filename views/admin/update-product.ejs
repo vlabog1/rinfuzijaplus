@@ -1,0 +1,45 @@
+<%- include('../includes/head2.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
+
+        <section class="ftco-section contact-section bg-light centered">
+            <% if (prods.length> 0) { %>
+                <div class="grid">
+                    <% for (let product of prods) { %>
+                        <article class="card product-item">
+                            <header class="card__header">
+                                <h1 class="product__title">
+                                    <%= product.title %>
+                                </h1>
+                            </header>
+                            <div class="card__image">
+                                <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+                            </div>
+                            <div class="card__content">
+                                <h5 class="product__description">
+                                    <%= product.description %>
+                                </h5>
+                                <p class="product__price">$<%= product.price %>
+                                </p>
+                            </div>
+                            <div class="card__actions">
+                                <a href="/edit-product/<%= product._id %>?edit=true"
+                                    class="btn btn-primary py-2 px-3">Uredi</a>
+
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <input type="hidden" value="<%= product._id %>" name="productId">
+                                <button class="btn btn-primary py-2 px-3" type="button"
+                                    onclick="deleteProduct(this)">Obriši</button>
+
+                            </div>
+                        </article>
+                        <% } %>
+                </div>
+                <% } else { %>
+                    <section class="ftco-section contact-section bg-light">
+                        <h1 class="centered">No Products Found!</h1>
+                    </section>
+                    <% } %>
+        </section>
+
+        <%- include('../includes/end2.ejs') %>
+            <script src="/js/admin.js"></script>

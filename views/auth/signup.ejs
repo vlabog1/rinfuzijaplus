@@ -1,0 +1,211 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation2.ejs') %>
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="/index">Rinfuzijaplus</a></span> <span>Prijava</span></p>
+          <h1 class="mb-0 bread">Prijava</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-7 ftco-animate">
+          <% if(errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+            <% } %>
+          <form action="/signup" class="billing-form" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <h3 class="mb-4 billing-heading">Upišite osnovne podatke</h3>
+            <div class="row align-items-end">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="firstname">Ime</label>
+                  <input type="text" name="firstname" value="<%= oldInput.firstname %>" class="<%= validationErrors.find(e => e.param === 'firstname') ? 'invalid' : ''%> form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lastname">Prezime</label>
+                  <input type="text" name="lastname" value="<%= oldInput.lastname %>"  class="<%= validationErrors.find(e => e.param === 'lastname') ? 'invalid' : '' %> form-control" placeholder="">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="country">Država</label>
+                  <div class="select-wrap">
+                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                    <select name="state" id="" class="form-control">
+                      <option value="">Srbija</option>
+                      <option value="">France</option>
+                      <option value="">Italy</option>
+                      <option value="">Philippines</option>
+                      <option value="">South Korea</option>
+                      <option value="">Hongkong</option>
+                      <option value="">Japan</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="streetaddress">Adresa ulica i broj</label>
+                  <input type="text" name="streetaddress" value="<%= oldInput.streetaddress %>" class="<%= validationErrors.find(e => e.param === 'streetaddress') ? 'invalid' : '' %> form-control" placeholder="Ulica">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" name="housenumber" value="<%= oldInput.housenumber %>" class="<%= validationErrors.find(e => e.param === 'housenumber') ? 'invalid' : '' %> form-control" placeholder="broj">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="towncity">Grad</label>
+                  <input type="text" name="towncity" value="<%= oldInput.towncity %>" class="<%= validationErrors.find(e => e.param === 'towncity') ? 'invalid' : '' %> form-control" placeholder="">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="postcodezip">Poštanski broj</label>
+                  <input type="text" name="postcodezip" value="<%= oldInput.postcodezip %>" class="<%= validationErrors.find(e => e.param === 'postcodezip') ? 'invalid' : '' %> form-control" placeholder="">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="phone">Telefon</label>
+                  <input type="text" name="phone" value="<%= oldInput.phone %>" class="<%= validationErrors.find(e => e.param === 'phone') ? 'invalid' : '' %> form-control" placeholder="Phone">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email">Email Adresa</label>
+                  <input type="email" name="email" value="<%= oldInput.email %>" class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %> form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="password">Lozinka</label>
+                  <input type="password" name="password" value="<%= oldInput.password %>" class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %> form-control" placeholder="password">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="confirmPassword">Ponovite lozinku</label>
+                  <input type="password" name="confirmPassword" value="<%= oldInput.confirmPassword %>" class="<%= validationErrors.find(e => e.param === 'confirmPassword') ? 'invalid' : '' %> form-control" placeholder="confirm password">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-12">
+                <div class="form-group mt-4">
+                  <div class="radio">
+                    <!-- <% if (editing) { %>
+                    <label class="mr-3"><input type="radio" name="optradio"> Hoću da se ulogujem! </label>
+                    <% } %> -->
+                    <!-- <label><input type="radio" name="optradio"> Hoću da kreiram nalog! </label> -->
+                  </div>
+                  <% if (editing) { %>
+                  <button type="submit" class="btn btn-primary py-3 px-4">Uloguj te se</button>
+                  <% } %>
+                  <button type="submit" name="userId" class="btn btn-primary py-3 px-4">Kreirajte vaš nalog</button>
+                  
+                </div>
+              </div>
+            </div>
+          </form><!-- END -->
+        </div>
+        <% if (editing) { %>
+          <div class="col-xl-5">
+            <div class="row mt-5 pt-3">
+              <div class="col-md-12 d-flex mb-5">
+                <div class="cart-detail cart-total p-3 p-md-4">
+                  <h3 class="billing-heading mb-4">Cart Total</h3>
+                  <p class="d-flex">
+                    <span>Subtotal</span>
+                    <span>$20.60</span>
+                  </p>
+                  <p class="d-flex">
+                    <span>Delivery</span>
+                    <span>$0.00</span>
+                  </p>
+                  <p class="d-flex">
+                    <span>Discount</span>
+                    <span>$3.00</span>
+                  </p>
+                  <hr>
+                  <p class="d-flex total-price">
+                    <span>Total</span>
+                    <span>$17.60</span>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="cart-detail p-3 p-md-4">
+                  <h3 class="billing-heading mb-4">Payment Method</h3>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="radio">
+                         <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="radio">
+                         <label><input type="radio" name="optradio" class="mr-2"> Check Payment</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="radio">
+                         <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="checkbox">
+                         <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
+                      </div>
+                    </div>
+                  </div>
+                  <form action="/order" method="POST">
+                    <button type="submit" class="btn btn-primary py-3 px-4">Naručite</button>
+                  <!-- <p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div> <!-- .col-md-8 -->
+        <% } %>
+      </div>
+    </div>
+  </section> <!-- .section -->
+
+      <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+    <div class="container py-4">
+      <div class="row d-flex justify-content-center py-5">
+        <div class="col-md-6">
+            <h2 style="font-size: 22px;" class="mb-0">Pretplatite se na naše novosti</h2>
+            <span>Dobijajte e-mail novosti o našim poslednjim proizvodima i specijalnim ponudama</span>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+          <form action="#" class="subscribe-form">
+            <div class="form-group d-flex">
+              <input type="text" class="form-control" placeholder="Unesite email adresu">
+              <input type="submit" value="pretplata" class="submit px-3">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+<%- include('../includes/end.ejs') %>

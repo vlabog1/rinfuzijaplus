@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+<main>
+    <section class="ftco-section contact-section bg-light centered">
+        <% if (orders.length <= 0) { %>
+            <h1>Nothing there!</h1>
+        <% } else { let totalSum2 = 0;%>
+            <ul class="orders">
+                <% orders.forEach(order => {let totalSum = 0; %>
+                    <li class="orders__item">
+                        <h1>Porudžbina - # <%= order._id %> - <a href="/order/<%= order._id %>">Račun</a> </h1>
+                        <p>firstname - <%= order.user.firstname %></p>
+                        <p>lastname - <%= order.user.lastname %></p>
+                        <p>streetaddress - <%= order.user.streetaddress %></p>
+                        <p> housenumber - <%= order.user.housenumber %></p>
+                        <p> towncity - <%= order.user.towncity %></p>
+                        <p>postcodezip - <%= order.user.postcodezip %></p>
+                        <p> phone - <%= order.user.phone %></p>
+                        <p>email - <%= order.user.email %></p>
+                        <p>total -  <%= order.products.forEach(product => {
+                            totalSum = totalSum + product.quantity * product.product.price
+                        }) %> <%= totalSum %> Din </p>
+                        <%= order.products.forEach(product => {
+                            <!-- console.log(orders.user.firstname) -->
+                            totalSum2 = totalSum2 + product.quantity * product.product.price
+                        }) %>
+                    </li>
+                <% }); %>
+            </ul>
+            <ul class="orders">
+                <li class="orders__item"><p>Ukupan zbir svih narudžbina za <%= orders[0].user.firstname %> <%= orders[0].user.lastname  %> - <%= totalSum2 %> Din</p></li>
+            </ul>
+        <% } %>
+    </section>
+</main>
+<%- include('../includes/end.ejs') %>

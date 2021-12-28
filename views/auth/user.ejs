@@ -1,0 +1,125 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="/checkout">Rinfuzijaplus</a></span> <span>User</span></p>
+          <h1 class="mb-0 bread">User</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-7 ftco-animate">
+          <% if(errorMessage) { %>
+            <div class="user-message user-message--error"><%=errorMessage %></div>
+          <% } %>
+          <% if(successMessage) { %>
+            <div class="user-message user-message--success"><%=successMessage %></div>
+          <% } %>
+          <form action="/user" class="billing-form" method="POST">
+                          <h3 class="mb-4 billing-heading">Osnovni podaci</h3>
+                <div class="row align-items-end">
+                    <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" value="<%= oldInput.firstname %>" class="form-control" placeholder="<%= oldInput.firstname %>">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="lastname">Last Name</label>
+                    <input type="text"  name="lastname" value="<%= oldInput.lastname %>" class="form-control" placeholder="<%= oldInput.lastname %>">
+                  </div>
+              </div>
+              <div class="w-100"></div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label for="country">State / Country</label>
+                          <div class="select-wrap">
+                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                        <select name="" id="" class="form-control">
+                            <option value="">Serbia</option>
+                          <option value="">Italy</option>
+                          <option value="">Philippines</option>
+                          <option value="">South Korea</option>
+                          <option value="">Hongkong</option>
+                          <option value="">Japan</option>
+                        </select>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                      <label for="streetaddress">Street Address and number</label>
+                    <input type="text"  name="streetaddress" value="<%= oldInput.streetaddress %>" class="form-control" placeholder="<%= oldInput.streetaddress %>">
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                    <input type="text"  name="housenumber" value="<%= oldInput.housenumber %>" class="form-control" placeholder="<%= oldInput.housenumber %>">
+                  </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                      <label for="towncity">Town / City</label>
+                    <input type="text"  name="towncity" value="<%= oldInput.towncity %>" class="form-control" placeholder="<%= oldInput.towncity %>">
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="postcodezip">Postcode / ZIP *</label>
+                    <input type="text"  name="postcodezip" value="<%= oldInput.postcodezip %>" class="form-control" placeholder="<%= oldInput.postcodezip %>">
+                  </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="phone">Phone</label>
+                    <input type="text" name="phone" value="<%= oldInput.phone %>" class="form-control" placeholder="<%= oldInput.phone %>">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="emailaddress">Email Address</label>
+                    <input type="text" name="email" value="<%= oldInput.email %>" class="form-control" placeholder="<%= oldInput.email %>">
+                  </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary py-3 px-4">Izmenite</button>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <!-- <p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p> -->
+              </div>
+              </div>
+            </form>
+            <!-- END -->
+         </div>
+        <!-- .col-md-8 -->
+      </div>
+    </div>
+  </section> <!-- .section -->
+<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+    <div class="container py-4">
+      <div class="row d-flex justify-content-center py-5">
+        <div class="col-md-6">
+            <h2 style="font-size: 22px;" class="mb-0">Pretplatite se na naše novosti</h2>
+            <span>Dobijajte e-mail novosti o našim poslednjim proizvodima i specijalnim ponudama</span>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+          <form action="#" class="subscribe-form">
+            <div class="form-group d-flex">
+              <input type="text" class="form-control" placeholder="Unesite email adresu">
+              <input type="submit" value="Pretplata" class="submit px-3">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+<%- include('../includes/end.ejs') %>

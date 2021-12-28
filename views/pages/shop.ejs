@@ -1,0 +1,110 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg_6.jpg');">
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="/index">Rinfuzijaplus</a></span> <span< href="/#">Proizvodi</span></p>
+          <h1 class="mb-0 bread">Proizvodi</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 mb-5 text-center">
+                <ul class="product-category">
+                    <li><a href="#" class="active">Svi proizvodi</a></li>
+                    <!-- <li><a href="#">Vegetables</a></li>
+                    <li><a href="#">Fruits</a></li>
+                    <li><a href="#">Juice</a></li>
+                    <li><a href="#">Dried</a></li> -->
+                </ul>
+            </div>
+        </div>
+        <% if (products.length > 0) { %>
+        <div class="row">
+            <% for (let product of products) { %> 
+    			<div class="col-md-6 col-lg-3 ftco-animate">
+    				<div class="product">
+    					<a href="/product-single/<%= product._id %>" class="img-prod"><img class="img-fluid" src="/<%= product.imageUrl %>" alt="Colorlib Template">
+    						<!-- <span class="status">30%</span> -->
+    						<div class="overlay"></div>
+    					</a>
+    					<div class="text py-3 pb-4 px-3 text-center">
+    						<h3><a href="#"><%= product.title %></a></h3>
+    						<div class="d-flex">
+    							<div class="pricing">
+		    						<p class="price"><span class="mr-2 price-dc"><%= product.price %></span><span class="price-sale">$80.00</span></p>
+		    					</div>
+	    					</div>
+	    					<div class="bottom-area d-flex px-3">
+	    						<div class="m-auto d-flex">
+                    <% if(isAuthenticated) { %>
+                        <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                     <% } %> 
+                      <a href="/product-single/<%= product._id %>" class="heart d-flex justify-content-center align-items-center ">
+                        <span><i class="ion-ios-heart"></i></span>
+                      </a>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+          <% } %>
+    		</div>
+        <% } else { %>
+          <h1>proizvodi nisu pronadjeni!</h1>
+      <% } %>
+        <div class="row mt-5">
+      <div class="col text-center">
+        <div class="block-27">
+          <ul>
+
+            <% if(currentPage != 1 && previousPage !== 1) { %> 
+               <li><a href="?page=1">1</a></li>
+            <% } %>
+            <% if(hasPreviousPage) { %> 
+              <li><a href="?page=<%= previousPage %>">&lt;</a></li>
+            <% } %>
+            <% if(currentPage !== 1) { %>
+              <li><a href="?page=<%= currentPage - 1 %>"><%= currentPage - 1 %></a></li>
+            <% } %>
+               <li class="active"><a href="?page=<%= currentPage %>"><%= currentPage %></a></li>
+            <% if(currentPage !== lastPage) { %>
+               <li><a href="?page=<%= currentPage + 1 %>"><%= currentPage + 1 %></a></li>
+            <% } %>
+            <% if(hasNextPage) { %> 
+               <li><a href="?page=<%= nextPage %>">&gt;</a></li>
+            <% } %>
+            <% if(lastPage !== currentPage && nextPage !== lastPage) { %>
+               <li><a href="?page=<%= lastPage %>"><%= lastPage %></a></li>
+            <% } %>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
+<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+    <div class="container py-4">
+      <div class="row d-flex justify-content-center py-5">
+        <div class="col-md-6">
+            <h2 style="font-size: 22px;" class="mb-0">Pretplatite se na naše novosti</h2>
+            <span>Dobijajte e-mail novosti o našim poslednjim proizvodima i specijalnim ponudama</span>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+          <form action="#" class="subscribe-form">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="form-group d-flex">
+              <input type="text" class="form-control" placeholder="Unesite email adresu">
+              <input type="submit" value="Pretplata" class="submit px-3">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+<%- include('../includes/end.ejs') %>

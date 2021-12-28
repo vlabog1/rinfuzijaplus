@@ -1,0 +1,92 @@
+<body class="goto-here">
+  <div class="py-1 bg-primary">
+    <div class="container">
+      <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+        <div class="col-lg-12 d-block">
+          <div class="row d-flex">
+            <div class="col-md pr-4 d-flex topper align-items-center">
+              <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span>
+              </div>
+              <span class="text">065 567806</span>
+            </div>
+            <div class="col-md pr-4 d-flex topper align-items-center">
+              <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
+                  class="icon-paper-plane"></span></div>
+              <span class="text">rinfuzijaplus@gmail.com</span>
+            </div>
+            <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+              <span class="text">Besplatna isporuka i uvek možete da odustanete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index">RINFUZIJAPLUS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item <%= path === '/index' ? 'active' : '' %>"><a href="/index" class="nav-link">Naslovna</a>
+          </li>
+          <li class="nav-item dropdown <%= path === '/shop' ? 'active' : '' %> 
+                                       <%= path === '/cart' ? 'active' : '' %> 
+                                       <%= path === '/checkout' ? 'active' : '' %>
+                                       <%= path === '/orders' ? 'active' : '' %> 
+                                       <%= path === '/add-product' ? 'active' : '' %> 
+                                       <%= path === '/update-product' ? 'active' : '' %>
+                                       ">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Proizvodi</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown04">
+              <a class="dropdown-item <%= path === '/shop' ? 'active' : '' %>" href="/">Prodavnica</a>
+              <% if(false) { %>
+                <a class="dropdown-item <%= path === '/cart' ? 'active' : '' %>" href="/cart">Korpa</a>
+                <a class="dropdown-item <%= path === '/checkout' ? 'active' : '' %>" href="/checkout">Ispravka</a>
+                <a class="dropdown-item <%= path === '/orders' ? 'active' : '' %>" href="/order">Narudžbina</a>
+                <a class="dropdown-item <%= path === '/add-product' ? 'active' : '' %>" href="/add-product">Dodajte
+                  proizvod</a>
+                <a class="dropdown-item <%= path === '/update-product' ? 'active' : '' %>"
+                  href="/update-product">Izmenite proizvod</a>
+                <% } %>
+            </div>
+          </li>
+          <li class="nav-item <%= path === '/about' ? 'active' : '' %>"><a href="/about" class="nav-link">O nama</a>
+          </li>
+          <li class="nav-item <%= path === '/blog' ? 'active' : '' %>"><a href="/blog" class="nav-link">Blog</a></li>
+          <li class="nav-item <%= path === '/contact' ? 'active' : '' %>"><a href="/contact"
+              class="nav-link">Kontakt</a></li>
+          <% if(false) { %>
+            <li class="nav-item cta cta-colored <%= path === '/cart' ? 'active' : '' %>"><a href="/cart"
+                class="nav-link"><span class="icon-shopping_cart"></span>[0]</a>
+            </li>
+            <% } %>
+              <% if(true) { %>
+                <li class="nav-item nav-item-login <%= path === '/login' ? 'active' : '' %>"><a href="/login"
+                    class="nav-link">Ulogujte se</a>
+                </li>
+                <li class="nav-item nav-item-login <%= path === '/signup' ? 'active' : '' %>"><a href="/signup"
+                    class="nav-link">Prijavi se</a>
+                </li>
+                <% } %>
+                  <% if(false) { %>
+                    <li class="nav-item <%= path === '/logout' ? 'active' : '' %>">
+                      <form action="/logout" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button id="logoutbtn" type="submit" href="/index" class="nav-link">Odjavi se</button>
+                      </form>
+                    </li>
+                    <li class="nav-item <%= path === '/user' ? 'active' : '' %>"><a href="/user" class="nav-link"><span
+                          class="icon-account_circle"></span>Korisnik</a>
+                    </li>
+                    <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- END nav -->

@@ -1,0 +1,47 @@
+<%- include('../includes/head2.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+  <section class="ftco-section contact-section bg-light centered">
+    <div class="add-items">
+      <% if(errorMessage) { %>
+        <div class="user-message user-message--error"><%=errorMessage %></div>
+      <% } %>
+      <form class="centered" action="/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST" enctype="multipart/form-data">
+        <div>
+            <div class="form-group centered">
+                <label for="title">Naslov</label>
+                <input type="text" name="title" class="<%= validationErrors.find(e => e.param === 'title') ? 'invalid' : '' %> form-control centered" id="title" value="<% if (editing || hasError) { %><%= product.title %><% } %>">
+              </div>
+        </div>
+        <!-- <div>
+            <div class="form-group centered">
+                <label for="imageUrl">Image URL</label>
+                <input type="text" name="imageUrl" class="<%= validationErrors.find(e => e.param === 'imageUrl') ? 'invalid' : '' %> form-control" id="imageUrl" value="<% if (editing || hasError) { %><%= product.imageUrl %><% } %>">
+              </div>
+        </div> -->
+        <div>
+          <div class="form-group centered">
+              <label for="image">Slika</label>
+              <input type="file" name="image" class="form-control" id="image">
+            </div>
+      </div>
+        <div class=" centered">
+            <div class="form-group centered">
+                <label for="price">Cena</label>
+                <input type="number" name="price" class="<%= validationErrors.find(e => e.param === 'price') ? 'invalid' : '' %> form-control" id="price" step="0" min="1" value="<% if (editing || hasError) { %><%= product.price %><% } %>">
+              </div>
+        </div>
+        <div>
+            <div class="form-group centered">
+                <label for="description">Opis</label>
+                <textarea name="description" class="<%= validationErrors.find(e => e.param === 'description') ? 'invalid' : '' %> form-control" id="description" rows="5"><% if (editing || hasError) { %><%= product.description %><% } %></textarea>
+              </div>
+        </div>
+        <% if (editing) { %>
+            <input type="hidden" value="<%= product._id %>" name="productId">
+        <% } %>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button class="btn btn-primary py-3 px-4" type="submit"><% if (editing) { %>Update Product<% } else { %>Add Product<% } %></button>
+    </form>
+    </div>
+  </section>
+<%- include('../includes/end2.ejs') %>

@@ -1,0 +1,34 @@
+<%- include('../includes/head.ejs') %>
+  <%- include('../includes/navigation2.ejs') %>
+    <main>
+      <section class="ftco-section contact-section bg-light">
+        <div class="add-items">
+          <% if(errorMessage) { %>
+            <div class="user-message user-message--error">
+              <%=errorMessage %>
+            </div>
+            <% } %>
+              <form action="/login" method="POST">
+                <div class="form-group">
+                  <input type="email" name="email"
+                    class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %> form-control"
+                    value="<%= oldInput.email %>" placeholder="E-MAIL">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="password"
+                    class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %> form-control"
+                    value="<%= oldInput.password %>" placeholder="LOZINKA">
+                </div>
+                <div class="form-group">
+                  <!-- <input type="submit" value="Authenticate" name="userId" class="btn btn-primary py-3 px-5"> -->
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button class="btn btn-primary py-3 px-5" class="form-control" type="submit">Ulogujte se</button>
+                </div>
+              </form>
+        </div>
+        <div class="centered">
+          <a class="btn btn-primary py-3 px-4" href="/reset">Izmena Lozinke</a>
+        </div>
+      </section>
+    </main>
+    <%- include('../includes/end.ejs') %>

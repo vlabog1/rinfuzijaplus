@@ -1,0 +1,22 @@
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
+        <main>
+            <section class="ftco-section contact-section bg-light">
+                <div class="add-items">
+                    <% if(errorMessage) { %>
+                        <div class="user-message user-message--error">
+                            <%=errorMessage %>
+                        </div>
+                        <% } %>
+                            <form action="/reset" method="POST">
+                                <div class="form-group centered">
+                                    <label for="email">E-mail</label>
+                                    <input class="form-control" type="email" name="email" id="email">
+                                </div>
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button class="btn btn-primary py-3 px-4" type="submit">Reset Password</button>
+                            </form>
+                </div>
+            </section>
+        </main>
+        <%- include('../includes/end.ejs') %>

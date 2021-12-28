@@ -1,0 +1,10 @@
+<form action="/cart" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button id="add-to-cart" href="/cart" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+      <input type="hidden" name="productId" value="<%= product._id %>">
+      <span><i class="ion-ios-menu"></i></span>
+    </button>
+  </form>
+    <a href="/cart" class="buy-now d-flex justify-content-center align-items-center mx-1">
+      <span><i class="ion-ios-cart"></i></span>
+    </a>
