@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+      "node": "14.17.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production MONGO_USER=vladabog MONGO_PASSWORD=XmeLFn!P-8R2WzR MONGO_DEFAULT_DATABASE=rinfuzijaplus2 node app.js",
