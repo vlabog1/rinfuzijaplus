@@ -186,7 +186,7 @@ exports.getCart = (req, res, next) => {
 
 exports.postCart = (req, res, next) => {
     const prodId = req.body.productId;
-    const quantity = req.body.quantity;
+    const quantity = req.body.quantity  || 1;
     Product.findById(prodId)
     .then(product => {
         return req.user.addToCart(product, quantity);
