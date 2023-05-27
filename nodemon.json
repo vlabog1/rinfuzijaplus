@@ -1,7 +1,7 @@
 {
     "env": {
-         "MONGO_USER": "vladabog",
-         "MONGO_PASSWORD": "XmeLFn!P-8R2WzR",
-         "MONGO_DEFAULT_DATABASE": "rinfuzijaplus2"
+         "MONGO_USER": "vlabog1982",
+         "MONGO_PASSWORD": "1234",
+         "MONGO_DEFAULT_DATABASE": "rinfuzijaplus"
     }
 }

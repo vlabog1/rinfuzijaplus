@@ -17,7 +17,7 @@ const User = require('./models/user');
 
 // const mongoConnect = require('./util/database').mongoConnect;
 const MONGODB_URI = 
-   `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.mkffb.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
+   `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.hzvnrct.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
 
 // const { userInfo } = require('os');
 // const user = require('./models/user');
